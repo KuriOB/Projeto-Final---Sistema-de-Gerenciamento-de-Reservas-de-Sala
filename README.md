@@ -2,5 +2,5 @@
 participantes:
 Andrey - Cadastro de Salas
 Gabriel Maxuel - 
-João -
+João - Agendamento de Reservas 
 Ramon - 
