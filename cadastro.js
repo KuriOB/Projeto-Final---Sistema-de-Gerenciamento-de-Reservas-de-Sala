@@ -9,4 +9,4 @@ function cadastro(salaNum, salaDescricao){
       }  
       cadastro();
       var guardarSala = [salaNum, salaDescricao];
-      console.log(guardarSala)git
+      console.log(guardarSala)
