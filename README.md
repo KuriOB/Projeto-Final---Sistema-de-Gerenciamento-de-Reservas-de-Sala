@@ -1,6 +1,6 @@
 # Projeto-Final---Sistema-de-Gerenciamento-de-Reservas-de-Sala
 participantes:
-Andrey - Cadastro de salas
+Andrey 
 Gabriel Maxuel
 João 
 Ramon
