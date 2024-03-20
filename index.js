@@ -1,3 +1,8 @@
+ var ids = ['75054533', '75125254', '75174335', '75036766', '75022423', 
+            '75106113', '75104045', '75032431', '75056152', '75110146', 
+            '75167115', '75117201', '75062507', '75043635', '75126476',
+            '75023411', '75137576', '75127231', '75103353', '75023371'];
+
 /* function agendamentoDeReservas(sala,numero,data,hora){
     while (sala) {
        prompt("Digite o id da sala");
@@ -5,7 +10,7 @@
 }
     console.log(agendamentoDeReservas()); */
 
-var id = prompt("Digite o id da sala");
+var id = prompt("Digite o ID da sala");
 var data = prompt("Digite a data que vc queira reservar");
 var hora = prompt("Digite a hora que deseja reservar");
 
