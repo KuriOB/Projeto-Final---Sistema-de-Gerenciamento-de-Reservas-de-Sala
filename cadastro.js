@@ -7,6 +7,4 @@ function cadastro(salaNum, salaDescricao){
    console.log(guardarSala)
        return guardarSala
       }  
-      cadastro();
-      var guardarSala = [salaNum, salaDescricao];
-      console.log(guardarSala)
+      cadastro()
