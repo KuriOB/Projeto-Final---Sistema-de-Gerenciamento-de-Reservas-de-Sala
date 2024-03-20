@@ -33,7 +33,7 @@ e 131072 (exclusivo).*/
 function gerarIds(quantidade) {
    var ids = [];
     for (var i = 0; i < quantidade; i++) {
-        ids.push(gerarId(10));
+        ids.push(gerarId(1));
     }
     return ids;
 }
