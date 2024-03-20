@@ -3,20 +3,7 @@
             '75167115', '75117201', '75062507', '75043635', '75126476',
             '75023411', '75137576', '75127231', '75103353', '75023371'];
 
-/* function agendamentoDeReservas(sala,numero,data,hora){
-    while (sala) {
-       prompt("Digite o id da sala");
-    }
-}
-    console.log(agendamentoDeReservas()); */
 
-var id = prompt("Digite o ID da sala");
-var data = prompt("Digite a data que vc queira reservar");
-var hora = prompt("Digite a hora que deseja reservar");
-
-console.log(id);
-console.log(data);
-console.log(hora);
 //Função gerarId(): Esta função gera um ID único. Aqui está o que cada parte faz:
 function gerarId() {
 //Math.random(): Esta função gera um número aleatório entre 500 (inclusivo) e 1000(exclusivo).
@@ -63,6 +50,56 @@ if (indice !== -1) {
 } else {
     alert('ID não encontrado');
 }
+
+// atualizaçao cadastro 
+
+/*  var ids = [ '75054533', '75125254', '75174335', '75036766', '75022423', 
+            '75106113', '75104045', '75032431', '75056152', '75110146', 
+            '75167115', '75117201', '75062507', '75043635', '75126476',
+            '75023411', '75137576', '75127231', '75103353', '75023371']; */
+
+   
+   
+   
+   // Função para agendar uma reserva
+   function agendarReserva(numeroSala, data, hora) {
+    // Verificar se a sala está disponível no horário desejado
+    if (verificarDisponibilidade(numeroSala, data, hora)) {
+        // Criar um objeto reserva
+        var reserva = {
+            sala: numeroSala,
+            data: data,
+            hora: hora
+        };
+
+        // Armazenar a reserva na sessão do navegador
+        var reservasAgendadas = JSON.parse(sessionStorage.getItem('reservas')) || [];
+        reservasAgendadas.push(reserva);
+        sessionStorage.setItem('reservas', JSON.stringify(reservasAgendadas));
+
+        console.log('Reserva agendada com sucesso:', reserva);
+        return true;
+    } else {
+        console.log('Desculpe, a sala não está disponível neste horário.');
+        return false;
+    }
+}
+
+// Função para verificar a disponibilidade da sala
+function verificarDisponibilidade(numeroSala, data, hora) {
+    // Aqui você pode implementar a lógica para verificar se a sala está disponível na data e hora especificadas
+    // Por exemplo, você pode consultar um banco de dados ou outra fonte de dados para verificar reservas existentes
+
+    // Neste exemplo simples, vamos supor que a sala está sempre disponível
+    return true;
+}
+
+// Exemplo de uso
+var numeroSala = prompt('Qual o NÚMERO da sua SALA ?');
+var data = prompt('Qual a DATA que você deseja reservar ?');
+var hora = prompt('Qual a HORA que você deseja reservar ?');
+
+agendarReserva(numeroSala, data, hora);
 
 
 
