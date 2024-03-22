@@ -1,0 +1,118 @@
+Não ta funcionando perfeitamente, mas deixarei aqui pra fins de exemplo, esse tem Opção Menu
+
+let data = {
+    id: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'],
+    reservas: []
+};
+
+// Carregar dados da sessão do navegador
+if (localStorage.getItem('data')) {
+    data = JSON.parse(localStorage.getItem('data'));
+}
+
+// Função para cadastrar uma nova sala
+function cadastrarSala() {
+    const numero = prompt('Digite o número da sala');
+    const descricao = prompt('Digite a descrição da sala');
+    data.salas.push({ numero, descricao });
+    localStorage.setItem('data', JSON.stringify(data));
+}
+
+// Função para agendar uma nova reserva
+function agendarReserva() {
+    const numero = prompt('Digite o número da sala');
+    const dataReserva = prompt('Digite a data da reserva (formato YYYY-MM-DD)');
+    const horaReserva = prompt('Digite a hora da reserva (formato HH:MM)');
+
+    // Verificar se a sala está disponível
+    const salaDisponivel = data.reservas.every(reserva => {
+        return reserva.numero !== numero || reserva.dataReserva !== dataReserva || reserva.horaReserva !== horaReserva;
+    });
+
+    if (salaDisponivel) {
+        data.reservas.push({ id: Date.now(), numero, dataReserva, horaReserva });
+        localStorage.setItem('data', JSON.stringify(data));
+    } else {
+        alert('A sala não está disponível no horário desejado');
+    }
+}
+
+// Função para visualizar todos os agendamentos
+function visualizarAgendamentos() {
+    console.log(data.reservas);
+}
+
+// Função para buscar um agendamento específico pelo ID
+function buscarAgendamento() {
+    var id = prompt('Digite o ID da Busca');
+    var agendamento = data.reservas.find(reserva => reserva.id === Number(id));
+    console.log("OS agendamentos são: ", agendamento);
+}
+
+// Função para editar um agendamento
+function editarAgendamento() {
+    const id = prompt('Digite o ID da edição');
+    const index = data.reservas.findIndex(reserva => reserva.id === Number(id));
+
+    if (index !== -1) {
+        const numero = prompt('Digite o novo número da sala');
+        const dataReserva = prompt('Digite a nova data da reserva (formato YYYY-MM-DD)');
+        const horaReserva = prompt('Digite a nova hora da reserva (formato HH:MM)');
+        data.reservas[index] = { id: Number(id), numero, dataReserva, horaReserva };
+        localStorage.setItem('data', JSON.stringify(data));
+    } else {
+        alert('Agendamento não encontrado');
+    }
+}
+
+// Função para excluir um agendamento
+function excluirAgendamento() {
+    const id = prompt('Digite o ID do agendamento');
+    const index = data.reservas.findIndex(reserva => reserva.id === Number(id));
+
+    if (index !== -1) {
+        const confirmacao = confirm('Tem certeza de que deseja excluir este agendamento?');
+        if (confirmacao) {
+            data.reservas.splice(index, 1);
+            localStorage.setItem('data', JSON.stringify(data));
+        }
+    } else {
+        alert('Agendamento não encontrado');
+    }
+}
+
+
+
+// Função principal para apresentar o menu de opções ao usuário
+function main() {
+    while (true) {
+        const opcao = prompt('Escolha uma opção: 1 - Cadastrar sala, 2 - Agendar reserva, 3 - Visualizar agendamentos, 4 - Buscar agendamento, 5 - Editar agendamento, 6 - Excluir agendamento');
+
+        switch (opcao) {
+            case '1':
+                cadastrarSala();
+                break;
+            case '2':
+                agendarReserva();
+                break;
+            case '3':
+                visualizarAgendamentos();
+                break;
+            case '4':
+                buscarAgendamento();
+                break;
+            case '5':
+                editarAgendamento();
+                break;
+            case '6':
+                excluirAgendamento();
+                break;
+                sair();
+            default:
+                alert('Opção inválida');
+        }
+    }
+}
+
+// Iniciar o programa
+main();
