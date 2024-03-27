@@ -1,0 +1,38 @@
+class Agendamento {
+    constructor(id, data, hora, sala) {
+        this.id = id;
+        this.data = data;
+        this.hora = hora;
+        this.sala = sala;
+    }
+}
+
+class GerenciadorDeAgendamentos {
+    constructor() {
+        this.agendamentos = [];
+    }
+
+    buscarAgendamento(id) {
+        return this.agendamentos.find(agendamento => agendamento.id === id);
+    }
+
+    editarAgendamento(id, novaData, novaHora, novaSala) {
+        let agendamento = this.buscarAgendamento(id);
+        if (agendamento) {
+            agendamento.data = novaData;
+            agendamento.hora = novaHora;
+            agendamento.sala = novaSala;
+        } else {
+            console.log('Agendamento não encontrado');
+        }
+    }
+
+    excluirAgendamento(id) {
+        let index = this.agendamentos.findIndex(agendamento => agendamento.id === id);
+        if (index !== -1) {
+            this.agendamentos.splice(index, 1);
+        } else {
+            console.log('Agendamento não encontrado');
+        }
+    }
+}
