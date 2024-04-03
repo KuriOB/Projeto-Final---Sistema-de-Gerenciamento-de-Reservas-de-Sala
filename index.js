@@ -3,28 +3,6 @@
        '11', '12', '13', '14', '15',
        '16', '17', '18', '19', '20'];
 
-
-//Função gerarId(): Esta função gera um ID único. Aqui está o que cada parte faz:
-function gerarId() {
-//Math.random(): Esta função gera um número aleatório entre 500 (inclusivo) e 1000(exclusivo).
-/*0x10000: Multiplica o número aleatório por 65536 (0x10000 em hexadecimal). Agora, o número aleatório está entre 65536 (inclusivo)
-e 131072 (exclusivo).*/
-return Math.floor((500 + Math.random()) * 0x10000).toString(8).substring(1);
-//Math.floor(...): Arredonda o número para baixo para o número inteiro mais próximo.
-//.toString(16): Converte o número em uma string hexadecimal.
-/*.substring(1): Remove o primeiro caractere da string. Isso é feito porque a conversão
-para hexadecimal pode às vezes resultar em uma string de 5 caracteres, mas queremos só 4 caracteres.
-*/
-}
-//Função gerarIds(quantidade): Esta função gera uma quantidade especificada de IDs únicos e os retorna em um array.
-function gerarIds(quantidade) {
-var ids = [];
-for (var i = 0; i < quantidade; i++) {
-   ids.push(gerarId(1));
-}
-return ids;
-}
-
 function buscarId(id, ids) {
 return ids.indexOf(id);
 }
