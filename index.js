@@ -3,19 +3,6 @@
        '11', '12', '13', '14', '15',
        '16', '17', '18', '19', '20'];
 
-function buscarId(id, ids) {
-return ids.indexOf(id);
-}
-
-/*A função aceita um parâmetro quantidade que especifica quantos IDs devem ser gerados.
-Um array vazio ids é inicializado para armazenar os IDs gerados.
-Um loop for é usado para gerar a quantidade especificada de IDs. Para cada iteração do loop, a função gerarId() 
-é chamada para gerar um ID único, que é então adicionado ao array ids.
-Finalmente, o array ids é retornado.*/
-
-var ids = gerarIds(20); 
-console.log(ids);
-
 //Procurar o ID gerado
 function buscarId(id, ids) {
 return ids.indexOf(id);
