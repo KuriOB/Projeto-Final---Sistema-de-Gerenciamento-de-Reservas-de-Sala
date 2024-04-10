@@ -188,11 +188,11 @@ function gerenciarAgendamentos() {
 // Função para excluir um agendamento
 function excluirAgendamento(id) {
     // Encontra o índice do agendamento com o ID fornecido
-    const i = listaDeAgendamentos.findIndex(agendamento => agendamento.id === id);
+    const index = listaDeAgendamentos.findIndex(agendamento => agendamento.id === id);
     
     // Se encontrou o agendamento com o ID fornecido, exclui-o
     if (index !== -1) {
-        listaDeAgendamentos.splice(i, 1);
+        listaDeAgendamentos.splice(index, 1);
         console.log(`Agendamento com ID ${id} excluído com sucesso.`);
     } else {
         console.log(`Agendamento com ID ${id} não encontrado.`);
