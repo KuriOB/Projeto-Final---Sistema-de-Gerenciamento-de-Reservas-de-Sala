@@ -20,3 +20,17 @@ var salas = [
     {"sala": 19, "data": "11-06-2024", "hora": "22:00 - 23:30"},
   
    ];
+
+
+
+
+
+excluirAgendamento(id) {
+        let index = this.agendamentos.findIndex(agendamento => agendamento.id === id);
+        if (index !== -1) {
+            this.agendamentos.splice(index, 1);
+            console.log('Sua SALA foi excuida com sucesso')
+        } else {
+            console.log('Agendamento não encontrado');
+        }
+    }
