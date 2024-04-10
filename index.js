@@ -17,16 +17,6 @@ alert('ID encontrado no índice: ' + indice);
 alert('ID não encontrado');
 }
 
-// atualizaçao cadastro 
-
-/*  var ids = [ '01', '02', '03', '04', '05', 
-'06', '07', '08', '09', '10', 
-'11', '12', '13', '14', '15',
-'16', '17', '18', '19', '20']; */
-
-
-
-
 // Função para agendar uma reserva
 function agendarReserva(numeroSala, data, hora) {
 // Verificar se a sala está disponível no horário desejado
