@@ -162,7 +162,7 @@ console.log("Agendamento encontrado:", reservas[idReserva]);
 } else {
 alert("Agendamento não encontrado.");
 }
-
+}
 // Função para editar um agendamento
 
 var idReserva = prompt("Informe o ID da reserva que deseja editar:");
@@ -254,6 +254,5 @@ default:
 
 // Iniciar o programa
 menuPrincipal();
-
 
 
