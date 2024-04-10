@@ -59,17 +59,15 @@ div#centralizar button:hover {
         <div>
     
     <div id="editarReserva">
-        <button onclick="gerenciarAgendamentos()", class ="botao"> editar reserva</button>
+        <button onclick="gerenciarAgendamentos(`${objetoParaString(reservasAgendadas)}`, valorObjeto)", class ="botao"> editar reserva</button>
         <div>
     
     <div id="excluirReserva">
         <button onclick="excluirAgendamento()", class ="botao"> excluir reserva</button>
         <div> 
     <div>
-    <script>
+ <script>
         //cadastro de salas
-        var reservasAgendadas;
-        var numeroSala
 function cadastro(salaNum, salaDescricao){
     var salaNum = Number(prompt("Informe o número da sua sala"));
     var salaDescricao = prompt("informe uma descrição para sua sala");
@@ -100,7 +98,7 @@ console.log(items)
     
     // Função para agendar uma reserva
 function agendarReserva(numeroSala, data, hora) {
-var numeroSala = prompt('Qual o NÚMERO da sua SALA ?');
+var numeroSala = Number(prompt('Qual o NÚMERO da sua SALA ?'));
 var data = prompt('Qual a DATA que você deseja reservar ?');
 var hora = prompt('Qual a HORA que você deseja reservar ?');
 // Verificar se a sala está disponível no horário desejado
@@ -111,7 +109,7 @@ if (verificarDisponibilidade(numeroSala, data, hora)) {
        data: data,
        hora: hora
    };
-   return reserva
+
 
    // Armazenar a reserva na sessão do navegador
     reservasAgendadas = JSON.parse(sessionStorage.getItem('reservas')) || [];
@@ -124,8 +122,23 @@ if (verificarDisponibilidade(numeroSala, data, hora)) {
    console.log('Desculpe, a sala não está disponível neste horário.');
    return false;
 }
+
 }
 
+function retornaSala(numeroSala){
+return reserva.numeroSala;
+
+
+return retornaSala();
+}
+
+function outraFuncao(numeroSala) {
+    console.log("O valor do objeto é:", numeroSala);
+}
+
+// Chamando a função externa e passando o valor retornado para outra função
+var valorObjeto = agendarReserva();
+//outraFuncao(valorObjeto); // Saída: O valor do objeto é: valor
 
 // Função para verificar a disponibilidade da sala
 function verificarDisponibilidade(numeroSala, data, hora) {
@@ -135,6 +148,7 @@ function verificarDisponibilidade(numeroSala, data, hora) {
 // Neste exemplo simples, vamos supor que a sala está sempre disponível
 return true;
 }
+
 function objetoParaString(objeto) {
     // Verifica se o objeto é um array
     if (Array.isArray(objeto)) {
@@ -157,65 +171,30 @@ function objetoParaString(objeto) {
 }
 
 // Função para gerenciar agendamentos
-function gerenciarAgendamentos() {
+function gerenciarAgendamentos(reservasAgendadas, valorObjeto) {
+    console.log(valorObjeto)
   // Função para editar um agendamento
-
-    var numeroSala = prompt("Informe o número da reserva que deseja editar:");
-    if (reservas[numeroSala]) {
+    var numeroID = Number(prompt("Informe o número da reserva que deseja editar:"));
+    if (valorObjeto === true) {
       var novaSala = prompt("Informe o novo número da sala (deixe em branco para não alterar):");
       var novaData = prompt("Informe a nova data da reserva (formato DD/MM/AAAA, deixe em branco para não alterar):");
       var novaHora = prompt("Informe a nova hora da reserva (formato HH:MM, deixe em branco para não alterar):");
   
       // Atualiza somente os campos que o usuário deseja alterar
-      reservas[numeroSala].numeroSala = novaSala || reservas[numeroSala].numeroSala;
-      reservas[numeroSala].data = novaData || reservas[numeroSala].data;
-      reservas[numeroSala].hora = novaHora || reservas[numeroSala].hora;
+      reservasAgendadas.numeroSala = novaSala || reservasAgendadas.numeroSala;
+      reservasAgendadas.data = novaData || reservasAgendadas.data;
+      reservasAgendadas.hora = novaHora || reservasAgendadas.hora;
   
-      sessionStorage.setItem('reservas', JSON.stringify(reservas));
+      sessionStorage.setItem('reservas', JSON.stringify(reservasAgendadas));
       alert("Agendamento editado com sucesso!");
     } else {
       alert("Agendamento não encontrado.");
     }
 }
-  
-  /// Função para excluir um agendamento
-function excluirAgendamento(idreserva) {
-    // Encontra o índice do agendamento com o ID fornecido
-    const index = listaDeAgendamentos.findIndex(agendamento => agendamento.id === id);
-    
-    // Se encontrou o agendamento com o ID fornecido, exclui-o
-    if (index !== -1) {
-        listaDeAgendamentos.splice(index, 1);
-        console.log(`Agendamento com ID ${id} excluído com sucesso.`);
-    } else {
-        console.log(`Agendamento com ID ${id} não encontrado.`);
-    }
-}
 
 
-  var salasReservadas =  [
-    {"sala": 1, "data": "02-01-2024", "hora": "09:00 - 10:30"},
 
-    {"sala": 3, "data": "06-03-2024", "hora": "12:00 - 13:30"},
-
-    {"sala": 5, "data": "09-05-2024", "hora": "15:00 - 16:00"},
-
-    {"sala": 7, "data": "20-06-2024", "hora": "08:00 - 09:00"},
-
-    {"sala": 9, "data": "15-04-2024", "hora": "06:00 - 07:00"},
-
-    {"sala": 11, "data": "08-10-2024", "hora": "17:00 - 18:30"}, 
-
-    {"sala": 13, "data": "10-12-2024", "hora": "21:00 - 22:30"},
-
-    {"sala": 15, "data": "25-08-2024", "hora": "11:00 - 12:30"},
-
-    {"sala": 17, "data": "29-07-2024", "hora": "20:00 - 21:30"},
-
-    {"sala": 19, "data": "11-06-2024", "hora": "22:00 - 23:30"},
-  
-   ];
-    console.log(salasReservadas)
+    console.log(salasReservadas);
     </script>     
 </body>
 </html>
