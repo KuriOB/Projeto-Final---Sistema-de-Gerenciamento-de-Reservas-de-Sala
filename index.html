@@ -2,13 +2,6 @@
 <html lang="en">
 <head>
     <style type="text/css">
-        #centralizar{
-    position:absolute; 
-    top:50%;
-    left:50%;
-    transform: translate(-50%, -50%);
-        }
-
     .botao{
     border: solid 1px blue;
     border-radius: 20px;
@@ -19,32 +12,31 @@
     .botao:hover{
     background-color: blue;
     color: white;
-    transform: scale(1.1)
     }
 
-    #agendar{ 
-    top:-17%;
-    left:-10%;
-    transform: translate(+17%, +10%);
-        }
+   
+    div#centralizar {
+    margin: 250px auto;
+    width: 128px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
 
-    #verReserva{
-    top:+12%;
-    left:-10%;
-    transform: translate(-12%, +10%);
-        }    
+div#centralizar button {
+    margin: 5px 0px;
+    width: -webkit-fill-available;
+    padding: 3px 6px;
+}
 
-    #editarReserva{ 
-    top:+4%;
-    left:-10%;
-    transform: translate(-4%, +10%);
-        }
+div#centralizar button:hover {
+    background-color: #fefefe;
+    border-color: #3333ff;
+    color: #3333ff;
+    cursor:pointer;
+}
 
-    #excluirReserva{ 
-    top:+2%;
-    left:-20%;
-    transform: translate(-2%, +20%);
-        } 
 
     </style>
     <meta charset="UTF-8">
@@ -58,6 +50,21 @@
 
     <div id="centralizar">
     <button onclick="cadastro()", class ="botao"> cadastrar sala</button>
+    <div id="agendar">
+        <button onclick="agendarReserva()", class ="botao"> agendar</button>
+        <div>
+    
+    <div id="verReserva">
+        <button onclick="alert(`${objetoParaString(reservasAgendadas)}`)", class ="botao"> ver reservas</button>
+        <div>
+    
+    <div id="editarReserva">
+        <button onclick="gerenciarAgendamentos()", class ="botao"> editar reserva</button>
+        <div>
+    
+    <div id="excluirReserva">
+        <button onclick="excluirAgendamento()", class ="botao"> excluir reserva</button>
+        <div> 
     <div>
     <script>
         //cadastro de salas
@@ -209,22 +216,6 @@ function excluirAgendamento(idreserva) {
   
    ];
     console.log(salasReservadas)
-    </script>
-
-<div id="agendar">
-    <button onclick="agendarReserva()", class ="botao"> agendar</button>
-    <div>
-
-<div id="verReserva">
-    <button onclick="alert(`${objetoParaString(reservasAgendadas)}`)", class ="botao"> ver reservas</button>
-    <div>
-
-<div id="editarReserva">
-    <button onclick="gerenciarAgendamentos()", class ="botao"> editar reserva</button>
-    <div>
-
-<div id="excluirReserva">
-    <button onclick="excluirAgendamento()", class ="botao"> excluir reserva</button>
-    <div>      
+    </script>     
 </body>
 </html>
