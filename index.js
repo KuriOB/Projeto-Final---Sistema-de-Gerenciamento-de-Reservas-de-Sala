@@ -186,7 +186,7 @@ function gerenciarAgendamentos() {
 
  
 // Função para excluir um agendamento
-function excluirAgendamento(id) {
+function excluirAgendamento(idreserva) {
     // Encontra o índice do agendamento com o ID fornecido
     const index = listaDeAgendamentos.findIndex(agendamento => agendamento.id === id);
     
