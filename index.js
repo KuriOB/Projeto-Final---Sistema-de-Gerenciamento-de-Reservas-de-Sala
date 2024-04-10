@@ -237,4 +237,33 @@ default:
 // Iniciar o programa
 menuPrincipal();
 
+// Exemplo de reservas (pode ser obtido de um banco de dados ou outra fonte)
+const reservas = [
+  { sala: 'A101', data: '2024-04-03', hora: '14:00' },
+  { sala: 'B203', data: '2024-04-03', hora: '15:30' },
+  // ... outras reservas ...
+];
+
+// Função para verificar se a sala está ocupada em um determinado horário
+function salaEstaOcupada(numeroSala, data, hora) {
+  for (const reserva of reservas) {
+    if (reserva.sala === numeroSala && reserva.data === data && reserva.hora === hora) {
+      return true; // Sala está ocupada
+    }
+  }
+  return false; // Sala está livre
+}
+
+// Exemplo de uso
+const salaDesejada = 'A101';
+const dataDesejada = '2024-04-03';
+const horaDesejada = '14:00';
+
+if (salaEstaOcupada(salaDesejada, dataDesejada, horaDesejada)) {
+  console.log(`A sala ${salaDesejada} está ocupada às ${horaDesejada} do dia ${dataDesejada}.`);
+} else {
+  console.log(`A sala ${salaDesejada} está livre às ${horaDesejada} do dia ${dataDesejada}.`);
+}
+
+
 
