@@ -66,7 +66,7 @@ div#centralizar button:hover {
         <button onclick="excluirAgendamento()", class ="botao"> excluir reserva</button>
         <div> 
     <div>
- <script>
+    <script>
         //cadastro de salas
 function cadastro(salaNum, salaDescricao){
     var salaNum = Number(prompt("Informe o número da sua sala"));
@@ -112,9 +112,9 @@ if (verificarDisponibilidade(numeroSala, data, hora)) {
 
 
    // Armazenar a reserva na sessão do navegador
-    reservasAgendadas = JSON.parse(sessionStorage.getItem('reservas')) || [];
+    reservasAgendadas = JSON.parse(localStorage.getItem('reservas')) || [];
    reservasAgendadas.push(reserva);
-   sessionStorage.setItem('reservas', JSON.stringify(reservasAgendadas));
+   localStorage.setItem('reservas', JSON.stringify(reservasAgendadas));
 
    console.log('Reserva agendada com sucesso:', reserva);
    return true;
@@ -132,12 +132,8 @@ return reserva.numeroSala;
 return retornaSala();
 }
 
-function outraFuncao(numeroSala) {
-    console.log("O valor do objeto é:", numeroSala);
-}
-
 // Chamando a função externa e passando o valor retornado para outra função
-var valorObjeto = agendarReserva();
+//var valorObjeto = agendarReserva();
 //outraFuncao(valorObjeto); // Saída: O valor do objeto é: valor
 
 // Função para verificar a disponibilidade da sala
@@ -171,11 +167,10 @@ function objetoParaString(objeto) {
 }
 
 // Função para gerenciar agendamentos
-function gerenciarAgendamentos(reservasAgendadas, valorObjeto) {
-    console.log(valorObjeto)
+function gerenciarAgendamentos(reservasAgendadas, retornaSala) {
   // Função para editar um agendamento
     var numeroID = Number(prompt("Informe o número da reserva que deseja editar:"));
-    if (valorObjeto === true) {
+    if (retornaSala === true) {
       var novaSala = prompt("Informe o novo número da sala (deixe em branco para não alterar):");
       var novaData = prompt("Informe a nova data da reserva (formato DD/MM/AAAA, deixe em branco para não alterar):");
       var novaHora = prompt("Informe a nova hora da reserva (formato HH:MM, deixe em branco para não alterar):");
@@ -192,9 +187,14 @@ function gerenciarAgendamentos(reservasAgendadas, valorObjeto) {
     }
 }
 
-
-
-    console.log(salasReservadas);
-    </script>     
+function excluirAgendamento() {
+    try {
+    localStorage.clear()
+    alert("agendamentos excluidos com sucesso")
+    } catch (error) {
+        console.log(error)
+    }
+}
+    </script>    
 </body>
 </html>
